@@ -8,7 +8,7 @@ Checks a specific search on youtrack to see if there are any issues found.
 ### usage
 1. Create a new security token on your youtrack profile page
 2. Update the YouTrackNotifier.conf file with the appropriate url, filter and token
-3. Run with `sbt run` and whenever the filter results in a result a notification is displayed.
+3. Run with `sbt run` and whenever the filter has a result, a notification is displayed
 
 #### todo
 * improve error handling
