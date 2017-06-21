@@ -12,6 +12,5 @@ Checks a specific search on youtrack to see if there are any issues found.
 
 ### todo
 * Support different and configurable notifications
-* move check interval to config
 * improve error handling
 * parse issue information returned from YouTrack and provide to notification handler

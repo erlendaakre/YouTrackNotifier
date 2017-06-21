@@ -14,14 +14,17 @@ object YouTrackNotifier {
   val url: String = config.getString("url")
   val token: String = config.getString("token")
   val filter: String = config.getString("filter")
+  val checkInterval: Int = config.getInt("checkInterval")
 
   final val system = ActorSystem("supportAlert")
 
   def main(args: Array[String]): Unit = {
     println("YouTrackNotifier starting...")
-    println(s"url    : $url")
-    println(s"token  : $token")
-    println(s"filter : $filter")
+    println(s"url            : $url")
+    println(s"token          : $token")
+    println(s"filter         : $filter")
+    println(s"check interval : $checkInterval seconds")
+    println()
 
     system.actorOf(Props[YouTrackNotifier])
   }
@@ -35,7 +38,7 @@ class YouTrackNotifier extends Actor {
 
   import system.dispatcher
   import scala.concurrent.duration._
-  system.scheduler.schedule(1 seconds, 10 seconds) {
+  system.scheduler.schedule(1 seconds, checkInterval seconds) {
     youTrackActor ! GetPage(s"$url?filter=${URLEncoder.encode(filter, "UTF-8")}")
   }
 
