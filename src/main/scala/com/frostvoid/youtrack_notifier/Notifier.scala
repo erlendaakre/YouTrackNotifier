@@ -8,7 +8,6 @@ import akka.actor.Actor
 class Notifier extends Actor {
 
   def receive: Receive = {
-    // TODO: support different notification methods and define in config
     case NewIssueNotification => linuxNotifySend()
   }
 

@@ -44,7 +44,8 @@ class YouTrackNotifier extends Actor {
   }
 
   private def parseResult(pageResult: PageResult): Unit = {
-    // TODO get issue name/id and send to notifier
-    if (pageResult.body.length > 15) notifierActor ! NewIssueNotification
+    if(pageResult.body == "{\"value\":\"Unauthorized\"}") println("ERROR: Unauthorized")
+
+    if (pageResult.body.length > 25) notifierActor ! NewIssueNotification
   }
 }
