@@ -12,7 +12,7 @@ Checks a specific search on youtrack to see if there are any issues found.
 
 #### todo
 * improve error handling
-* parse issue information returned from YouTrack and provide to notification handler
+* parse issue information returned from YouTrack and provide to notification handler instead of using a size threhshold
 * support windows notifications: https://technet.microsoft.com/en-us/library/ff730952.aspx
 * configurable notification types
 * notify to hipchat?
