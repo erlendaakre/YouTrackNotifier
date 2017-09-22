@@ -2,6 +2,7 @@ package com.frostvoid.youtrack_notifier
 
 import java.io.File
 import java.net.URLEncoder
+import java.util.Calendar
 
 import akka.actor.{Actor, ActorSystem, Props}
 import com.typesafe.config.{Config, ConfigFactory}
@@ -48,7 +49,9 @@ class YouTrackNotifier extends Actor {
 
   private def parseResult(pageResult: PageResult): Unit = {
     if(pageResult.body == "{\"value\":\"Unauthorized\"}") println("ERROR: Unauthorized")
-
-    if (pageResult.body.length > 25) notifierActor ! NewIssueNotification
+    if (pageResult.body.length > 50) {
+      println(s"${Calendar.getInstance().getTime} : Got notification:\n${pageResult.body}")
+      notifierActor ! NewIssueNotification
+    }
   }
 }
